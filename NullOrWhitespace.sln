@@ -3,7 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "NullOrWhitespace.Web", "NullOrWhitespace.Web\", "{B3399FA9-B56C-44BD-BC6A-D30077B26DC1}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{b43019cf-6dcc-4791-b8b1-0ab87caa51f2}|NullOrWhitespace.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62301"
+		Debug.AspNetCompiler.PhysicalPath = "NullOrWhitespace.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62301\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62301"
+		Release.AspNetCompiler.PhysicalPath = "NullOrWhitespace.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62301\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62301"
+		SlnRelativePath = "NullOrWhitespace.Web\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullOrWhitespace", "NullOrWhitespace\NullOrWhitespace.csproj", "{B43019CF-6DCC-4791-B8B1-0AB87CAA51F2}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3399FA9-B56C-44BD-BC6A-D30077B26DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3399FA9-B56C-44BD-BC6A-D30077B26DC1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43019CF-6DCC-4791-B8B1-0AB87CAA51F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43019CF-6DCC-4791-B8B1-0AB87CAA51F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43019CF-6DCC-4791-B8B1-0AB87CAA51F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43019CF-6DCC-4791-B8B1-0AB87CAA51F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
