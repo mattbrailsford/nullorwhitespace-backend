@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using NullOrWhitespace.Models;
+using NullOrWhitespace.Web.Extensions;
 using NullOrWhitespace.Web.Mapping.Resolvers;
 using NullOrWhitespace.Web.ViewModels;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace NullOrWhitespace.Web.Mapping
             // HomePage
             Mapper.CreateMap<HomePage, HomePageViewModel>()
                 .IncludeBase<Page, BasePageViewModel>()
-                .ForMember(x => x.Image, o => o.MapFrom(x => x.Image.Url))
+                .ForMember(x => x.Image, o => o.MapFrom(x => x.Image.Url.ToAbsoluteUrl()))
                 .ForMember(x => x.LatestBlogPosts, o => o.ResolveUsing<LatestBlogPostsResolver>());
 
             Mapper.CreateMap<HomePage, InitViewModel>();
@@ -59,7 +60,7 @@ namespace NullOrWhitespace.Web.Mapping
 
             Mapper.CreateMap<ImageBlock, ImageBlockViewModel>()
                 .IncludeBase<IPublishedContent, BaseBlockViewModel>()
-                .ForMember(x => x.Image, o => o.MapFrom(x => x.Image.Url));
+                .ForMember(x => x.Image, o => o.MapFrom(x => x.Image.Url.ToAbsoluteUrl()));
 
             Mapper.CreateMap<CodeBlock, ImageBlockViewModel>()
                 .IncludeBase<IPublishedContent, CodeBlockViewModel>();
