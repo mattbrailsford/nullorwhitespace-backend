@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace NullOrWhitespace.Models
 {
-	/// <summary>Standard Page</summary>
-	[PublishedContentModel("standardPage")]
-	public partial class StandardPage : Page
+	/// <summary>GitHub Link</summary>
+	[PublishedContentModel("gitHubLink")]
+	public partial class GitHubLink : SocialLink
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "standardPage";
+		public new const string ModelTypeAlias = "gitHubLink";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public StandardPage(IPublishedContent content)
+		public GitHubLink(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +40,9 @@ namespace NullOrWhitespace.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<StandardPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<GitHubLink, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Content: Main body content for the page.
-		///</summary>
-		[ImplementPropertyType("bodyText")]
-		public IHtmlString BodyText
-		{
-			get { return this.GetPropertyValue<IHtmlString>("bodyText"); }
 		}
 	}
 }

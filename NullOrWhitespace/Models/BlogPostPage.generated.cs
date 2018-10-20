@@ -44,5 +44,32 @@ namespace NullOrWhitespace.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Blocks: Content blocks to make up date main content of this page.
+		///</summary>
+		[ImplementPropertyType("blocks")]
+		public IEnumerable<IPublishedContent> Blocks
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("blocks"); }
+		}
+
+		///<summary>
+		/// Excerpt: Short excerpt for this block post.
+		///</summary>
+		[ImplementPropertyType("excerpt")]
+		public string Excerpt
+		{
+			get { return this.GetPropertyValue<string>("excerpt"); }
+		}
+
+		///<summary>
+		/// Publish Date: Date the article was published.
+		///</summary>
+		[ImplementPropertyType("publishDate")]
+		public DateTime PublishDate
+		{
+			get { return this.GetPropertyValue<DateTime>("publishDate"); }
+		}
 	}
 }

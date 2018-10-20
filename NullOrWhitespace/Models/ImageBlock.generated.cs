@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace NullOrWhitespace.Models
 {
-	/// <summary>Standard Page</summary>
-	[PublishedContentModel("standardPage")]
-	public partial class StandardPage : Page
+	/// <summary>Image Block</summary>
+	[PublishedContentModel("imageBlock")]
+	public partial class ImageBlock : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "standardPage";
+		public new const string ModelTypeAlias = "imageBlock";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public StandardPage(IPublishedContent content)
+		public ImageBlock(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +40,27 @@ namespace NullOrWhitespace.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<StandardPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ImageBlock, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Content: Main body content for the page.
+		/// Image: Image to display for this block
 		///</summary>
-		[ImplementPropertyType("bodyText")]
-		public IHtmlString BodyText
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
 		{
-			get { return this.GetPropertyValue<IHtmlString>("bodyText"); }
+			get { return this.GetPropertyValue<IPublishedContent>("image"); }
+		}
+
+		///<summary>
+		/// Alt Text: Alternative text to display for this image.
+		///</summary>
+		[ImplementPropertyType("imageAltText")]
+		public string ImageAltText
+		{
+			get { return this.GetPropertyValue<string>("imageAltText"); }
 		}
 	}
 }

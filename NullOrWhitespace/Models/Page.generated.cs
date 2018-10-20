@@ -44,5 +44,32 @@ namespace NullOrWhitespace.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Meta Description: Appears in Google search results. It should be descriptive and in complete sentences. Include value statements and a call-to-action (click here, learn more by clicking here, download here, view video, etc) so people click the link. Include relevant keywords. 50-155 characters.
+		///</summary>
+		[ImplementPropertyType("metaDescription")]
+		public string MetaDescription
+		{
+			get { return this.GetPropertyValue<string>("metaDescription"); }
+		}
+
+		///<summary>
+		/// Meta Keywords: Used by smaller search engines but not Google, Bing or Yahoo. The meta keywords to display to search engines. List in order of relevance and importance. Separate words or phrases with a comma. Include misspellings and variations. Include action words such as buy, shop, find, download or words related to your industry.
+		///</summary>
+		[ImplementPropertyType("metaKeywords")]
+		public string MetaKeywords
+		{
+			get { return this.GetPropertyValue<string>("metaKeywords"); }
+		}
+
+		///<summary>
+		/// Page Title: Overrides the default page title.
+		///</summary>
+		[ImplementPropertyType("pageTitle")]
+		public string PageTitle
+		{
+			get { return this.GetPropertyValue<string>("pageTitle"); }
+		}
 	}
 }

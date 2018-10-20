@@ -44,5 +44,59 @@ namespace NullOrWhitespace.Models
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Image: Image to appear behind the intro paragraph.
+		///</summary>
+		[ImplementPropertyType("image")]
+		public IPublishedContent Image
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("image"); }
+		}
+
+		///<summary>
+		/// Intro: Short intro paragraph.
+		///</summary>
+		[ImplementPropertyType("intro")]
+		public string Intro
+		{
+			get { return this.GetPropertyValue<string>("intro"); }
+		}
+
+		///<summary>
+		/// Description: A description for the site, to be used in taglines and auto-generated page titles.
+		///</summary>
+		[ImplementPropertyType("siteDescription")]
+		public string SiteDescription
+		{
+			get { return this.GetPropertyValue<string>("siteDescription"); }
+		}
+
+		///<summary>
+		/// Legal Text: Any legally required text to be displayed in the very foot of the site, such as copyright notices etc.
+		///</summary>
+		[ImplementPropertyType("siteLegalText")]
+		public string SiteLegalText
+		{
+			get { return this.GetPropertyValue<string>("siteLegalText"); }
+		}
+
+		///<summary>
+		/// Name: A name for the site, to be used in taglines and auto-generated page titles.
+		///</summary>
+		[ImplementPropertyType("siteName")]
+		public string SiteName
+		{
+			get { return this.GetPropertyValue<string>("siteName"); }
+		}
+
+		///<summary>
+		/// Social Links: Social links to show in the foot of the site.
+		///</summary>
+		[ImplementPropertyType("socialLinks")]
+		public IEnumerable<IPublishedContent> SocialLinks
+		{
+			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("socialLinks"); }
+		}
 	}
 }

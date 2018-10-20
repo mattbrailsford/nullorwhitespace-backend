@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace NullOrWhitespace.Models
 {
-	/// <summary>Standard Page</summary>
-	[PublishedContentModel("standardPage")]
-	public partial class StandardPage : Page
+	/// <summary>Social Link</summary>
+	[PublishedContentModel("socialLink")]
+	public partial class SocialLink : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "standardPage";
+		public new const string ModelTypeAlias = "socialLink";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public StandardPage(IPublishedContent content)
+		public SocialLink(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,18 +40,18 @@ namespace NullOrWhitespace.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<StandardPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<SocialLink, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Content: Main body content for the page.
+		/// URL: The URL of the profile to link to.
 		///</summary>
-		[ImplementPropertyType("bodyText")]
-		public IHtmlString BodyText
+		[ImplementPropertyType("profileUrl")]
+		public string ProfileUrl
 		{
-			get { return this.GetPropertyValue<IHtmlString>("bodyText"); }
+			get { return this.GetPropertyValue<string>("profileUrl"); }
 		}
 	}
 }

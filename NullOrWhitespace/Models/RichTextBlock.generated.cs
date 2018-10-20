@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace NullOrWhitespace.Models
 {
-	/// <summary>Standard Page</summary>
-	[PublishedContentModel("standardPage")]
-	public partial class StandardPage : Page
+	/// <summary>Rich Text Block</summary>
+	[PublishedContentModel("richTextBlock")]
+	public partial class RichTextBlock : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "standardPage";
+		public new const string ModelTypeAlias = "richTextBlock";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public StandardPage(IPublishedContent content)
+		public RichTextBlock(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,13 +40,13 @@ namespace NullOrWhitespace.Models
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<StandardPage, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<RichTextBlock, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// Content: Main body content for the page.
+		/// Content: Main content of this block
 		///</summary>
 		[ImplementPropertyType("bodyText")]
 		public IHtmlString BodyText

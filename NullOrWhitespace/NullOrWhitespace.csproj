@@ -164,6 +164,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -242,10 +243,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Models\CodeBlock.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\File.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Folder.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GitHubLink.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\HomePage.generated.cs">
@@ -254,20 +261,49 @@
     <Compile Include="Models\Image.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ImageBlock.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LinkedInLink.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Member.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Page.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\RichTextBlock.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SocialLink.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\StandardPage.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TwitterLink.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UmbracoLink.generated.cs">
+      <DependentUpon>Builder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\ViewModels\BaseBlockViewModel.cs" />
+    <Compile Include="Web\ViewModels\BaseBlogPostPageViewModel.cs" />
+    <Compile Include="Web\Mapping\Resolvers\LatestBlogPostsResolver.cs" />
+    <Compile Include="Web\Mapping\Resolvers\RoutesResolver.cs" />
+    <Compile Include="Web\Mapping\Resolvers\MetaTitleResolver.cs" />
     <Compile Include="Web\Mapping\ViewModelMappingProfile.cs" />
     <Compile Include="Web\ViewModels\BasePageViewModel.cs" />
     <Compile Include="Web\ViewModels\BlogPostPageViewModel.cs" />
     <Compile Include="Web\ViewModels\BlogPageViewModel.cs" />
+    <Compile Include="Web\ViewModels\CodeBlockViewModel.cs" />
+    <Compile Include="Web\ViewModels\ImageBlockViewModel.cs" />
+    <Compile Include="Web\ViewModels\RichTextBlockViewModel.cs" />
+    <Compile Include="Web\ViewModels\RoutesViewModel.cs" />
+    <Compile Include="Web\ViewModels\InitViewModel.cs" />
+    <Compile Include="Web\ViewModels\SocialLinkViewModel.cs" />
     <Compile Include="Web\ViewModels\StandardPageViewModel.cs" />
     <Compile Include="Web\ViewModels\HomePageViewModel.cs" />
   </ItemGroup>

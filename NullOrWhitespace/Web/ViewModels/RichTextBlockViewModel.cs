@@ -1,6 +1,6 @@
 ﻿namespace NullOrWhitespace.Web.ViewModels
 {
-    public class StandardPageViewModel : BasePageViewModel
+    public class RichTextBlockViewModel : BaseBlockViewModel
     {
         public string BodyText { get; set; }
     }
