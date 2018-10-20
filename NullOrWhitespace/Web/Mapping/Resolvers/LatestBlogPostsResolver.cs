@@ -17,7 +17,7 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
             var blogPage = homePage.Children.OfType<BlogPage>().First();
             var latestBlogPosts = blogPage.Children.OfType<BlogPostPage>()
                 .OrderByDescending(x => x.PublishDate)
-                .Take(3);
+                .Take(NullOrWhitespaceConstants.BlogPageSize);
 
             var mapped = Mapper.Map<IEnumerable<BaseBlogPostPageViewModel>>(latestBlogPosts);
 

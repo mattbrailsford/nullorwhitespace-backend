@@ -3,10 +3,8 @@ using NullOrWhitespace.Models;
 using NullOrWhitespace.Web.Extensions;
 using NullOrWhitespace.Web.Mapping.Resolvers;
 using NullOrWhitespace.Web.ViewModels;
-using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Models;
-using Umbraco.Web;
 
 namespace NullOrWhitespace.Web.Mapping
 {
@@ -41,7 +39,7 @@ namespace NullOrWhitespace.Web.Mapping
             // BlogPage
             Mapper.CreateMap<BlogPage, BlogPageViewModel>()
                 .IncludeBase<Page, BasePageViewModel>()
-                .ForMember(x => x.BlogPosts, o => o.MapFrom(x => x.Children.Where(y => y.IsVisible())));
+                .ForMember(x => x.BlogPosts, o => o.ResolveUsing<PagniatedBlogPostsResolver>());
 
             // BlogPostPage
             Mapper.CreateMap<BlogPostPage, BaseBlogPostPageViewModel>()

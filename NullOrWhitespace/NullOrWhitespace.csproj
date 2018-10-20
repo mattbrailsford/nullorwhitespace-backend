@@ -288,8 +288,10 @@
     <Compile Include="Models\UmbracoLink.generated.cs">
       <DependentUpon>Builder.cs</DependentUpon>
     </Compile>
+    <Compile Include="NullOrWhitespaceConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Extensions\StringExtensions.cs" />
+    <Compile Include="Web\Mapping\Resolvers\PagniatedBlogPostsResolver.cs" />
     <Compile Include="Web\ViewModels\BaseBlockViewModel.cs" />
     <Compile Include="Web\ViewModels\BaseBlogPostPageViewModel.cs" />
     <Compile Include="Web\Mapping\Resolvers\LatestBlogPostsResolver.cs" />
