@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using NullOrWhitespace.Models;
-using NullOrWhitespace.Web.ViewModels;
-using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Core.Models;
 using Umbraco.Web;
@@ -16,12 +14,11 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
             var homePage = currentPage.AncestorOrSelf(HomePage.ModelTypeAlias);
             var blogPage = homePage.Children.OfType<BlogPage>().First();
             var latestBlogPosts = blogPage.Children.OfType<BlogPostPage>()
+                .Where(x => x.IsVisible())
                 .OrderByDescending(x => x.PublishDate)
                 .Take(NullOrWhitespaceConstants.BlogPageSize);
 
-            var mapped = Mapper.Map<IEnumerable<BaseBlogPostPageViewModel>>(latestBlogPosts);
-
-            return source.New(mapped);
+            return source.New(latestBlogPosts);
         }
     }
 }

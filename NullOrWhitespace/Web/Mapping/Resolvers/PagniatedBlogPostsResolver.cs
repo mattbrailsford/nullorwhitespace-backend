@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Examine;
 using NullOrWhitespace.Models;
-using NullOrWhitespace.Web.ViewModels;
 using Our.Umbraco.HeadRest.Web.Mapping;
-using System.Collections.Generic;
 using System.Linq;
+using Umbraco.Core;
+using Umbraco.Core.Models;
+using Umbraco.Web;
 
 namespace NullOrWhitespace.Web.Mapping.Resolvers
 {
@@ -21,17 +23,21 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
 
             var page = int.Parse("0" + context.Request.QueryString["p"]);
             if (page == 0) page = 1;
+            
+            var searcher = ExamineManager.Instance.DefaultSearchProvider;
+            var criteria = searcher.CreateSearchCriteria()
+                .Field("nodeTypeAlias", BlogPostPage.ModelTypeAlias)
+                .And().Field("searchPath", blogPage.Id.ToInvariantString())
+                .Not().Field("umbracoNaviHide", "1")
+                .And().OrderByDescending("publishDate")
+                .Compile();
 
-            // TODO: Switch to XPath or Examine query
+            var results = searcher.Search(criteria, page * NullOrWhitespaceConstants.BlogPageSize);
+            var result = new PagedResult<BlogPostPage>(results.TotalItemCount, page, NullOrWhitespaceConstants.BlogPageSize);
+            result.Items = results.Skip(result.GetSkipSize())
+                .Select(x => context.UmbracoContext.ContentCache.GetById(int.Parse(x.Fields["id"])).OfType<BlogPostPage>());
 
-            var posts = blogPage.Children.OfType<BlogPostPage>()
-                .OrderByDescending(x => x.PublishDate)
-                .Skip((page - 1) * NullOrWhitespaceConstants.BlogPageSize)
-                .Take(NullOrWhitespaceConstants.BlogPageSize);
-
-            var mapped = Mapper.Map<IEnumerable<BaseBlogPostPageViewModel>>(posts);
-
-            return source.New(mapped);
+            return source.New(result);
         }
     }
 }

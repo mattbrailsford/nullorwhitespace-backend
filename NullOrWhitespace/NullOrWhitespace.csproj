@@ -145,6 +145,7 @@
     <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.1, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.12.3\lib\net45\System.Data.SqlServerCe.dll</HintPath>
@@ -291,6 +292,7 @@
     <Compile Include="NullOrWhitespaceConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Extensions\StringExtensions.cs" />
+    <Compile Include="Web\Mapping\Resolvers\PagedResultResolver.cs" />
     <Compile Include="Web\Mapping\Resolvers\PagniatedBlogPostsResolver.cs" />
     <Compile Include="Web\ViewModels\BaseBlockViewModel.cs" />
     <Compile Include="Web\ViewModels\BaseBlogPostPageViewModel.cs" />

@@ -41,6 +41,8 @@ namespace NullOrWhitespace.Web.Mapping
                 .IncludeBase<Page, BasePageViewModel>()
                 .ForMember(x => x.BlogPosts, o => o.ResolveUsing<PagniatedBlogPostsResolver>());
 
+            Mapper.CreateMap<PagedResult<BlogPostPage>, PagedResult<BaseBlogPostPageViewModel>>();
+
             // BlogPostPage
             Mapper.CreateMap<BlogPostPage, BaseBlogPostPageViewModel>()
                 .IncludeBase<Page, BasePageViewModel>()

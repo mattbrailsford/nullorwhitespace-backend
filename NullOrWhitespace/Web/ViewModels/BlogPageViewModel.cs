@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Umbraco.Core.Models;
 
 namespace NullOrWhitespace.Web.ViewModels
 {
     public class BlogPageViewModel : BasePageViewModel
     {
-        public IEnumerable<BaseBlogPostPageViewModel> BlogPosts { get; set; }
+        public PagedResult<BaseBlogPostPageViewModel> BlogPosts { get; set; }
     }
 }
