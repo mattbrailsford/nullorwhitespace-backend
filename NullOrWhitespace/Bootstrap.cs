@@ -7,9 +7,15 @@ using NullOrWhitespace.Web.ViewModels;
 using Our.Umbraco.HeadRest;
 using Our.Umbraco.HeadRest.Web.Mapping;
 using System;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.Globalization;
+using System.Net;
+using umbraco.presentation;
 using Umbraco.Core;
+using Umbraco.Core.Cache;
 using Umbraco.Core.Services;
+using Umbraco.Web.Cache;
 using UmbracoExamine;
 
 namespace NullOrWhitespace
@@ -34,6 +40,19 @@ namespace NullOrWhitespace
                 RoutesResolver = null
             });
 
+            // Configure auto build
+            CacheRefresherBase<PageCacheRefresher>.CacheUpdated += (sender, args) =>
+            {
+                var url = ConfigurationManager.AppSettings["NetlifyWebhookUrl"];
+                if (!url.IsNullOrWhiteSpace())
+                {
+                    using (var client = new WebClient())
+                    {
+                        client.UploadValues(url, "POST", new NameValueCollection());
+                    }
+                }
+            };
+
             // Configure default values
             ContentService.Created += (sender, args) =>
             {
@@ -53,15 +72,23 @@ namespace NullOrWhitespace
                         ? DateTime.Parse(args.Fields["publishDate"])
                         : DateTime.Parse(args.Fields["createDate"]);
 
-                    var sortableField = new Field("_Sort_publishDate",
+                    var sortableField = new Field("__Sort_publishDate",
                         publishDate.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture),
                         Field.Store.YES,
                         Field.Index.NOT_ANALYZED);
+
+                    args.Document.Add(sortableField);
                 }
             };
 
             indexer.GatheringNodeData += (sender, args) =>
             {
+                var publishDate = args.Fields.ContainsKey("publishDate")
+                        ? DateTime.Parse(args.Fields["publishDate"])
+                        : DateTime.Parse(args.Fields["createDate"]);
+
+                args.Fields["searchPublishDate"] = DateTools.DateToString(publishDate, DateTools.Resolution.SECOND);
+
                 args.Fields.Add("searchPath", string.Join(" ", args.Fields["path"].Split(',')));
             };
         }
