@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Examine;
 using NullOrWhitespace.Models;
+using Our.Umbraco.HeadRest.Web.Extensions;
 using Our.Umbraco.HeadRest.Web.Mapping;
 using System.Linq;
 using Umbraco.Core;
@@ -21,9 +22,7 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
             if (context == null)
                 return source.Ignore();
 
-            var page = int.Parse("0" + context.Request.QueryString["p"]);
-            if (page == 0) page = 1;
-            
+            var page = context.Request.HeadRestRouteParam("page", 1);
             var searcher = ExamineManager.Instance.DefaultSearchProvider;
             var criteria = searcher.CreateSearchCriteria()
                 .Field("nodeTypeAlias", BlogPostPage.ModelTypeAlias)

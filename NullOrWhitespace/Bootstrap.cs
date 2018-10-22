@@ -5,13 +5,14 @@ using NullOrWhitespace.Models;
 using NullOrWhitespace.Web.Mapping;
 using NullOrWhitespace.Web.ViewModels;
 using Our.Umbraco.HeadRest;
+using Our.Umbraco.HeadRest.Web.Extensions;
 using Our.Umbraco.HeadRest.Web.Mapping;
+using Our.Umbraco.HeadRest.Web.Routing;
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Globalization;
 using System.Net;
-using umbraco.presentation;
 using Umbraco.Core;
 using Umbraco.Core.Cache;
 using Umbraco.Core.Services;
@@ -30,14 +31,20 @@ namespace NullOrWhitespace
             // Configure endpoint
             HeadRest.ConfigureEndpoint(new HeadRestOptions
             {
+                CustomRouteMappings = new HeadRestRouteMap()
+                    .For("^/(?<altRoute>init|routes)/?$").MapTo("/")
+                    .For("^/(blog)/(?<page>[0-9]+)/?$").MapTo("/$1/"),
                 ViewModelMappings = new HeadRestViewModelMap()
-                    .For(HomePage.ModelTypeAlias).If(x => x.Request.QueryString["subRoute"] == "init").MapTo<InitViewModel>()
-                    .For(HomePage.ModelTypeAlias).If(x => x.Request.QueryString["subRoute"] == "routes").MapTo<RoutesViewModel>()
+                    .For(HomePage.ModelTypeAlias)
+                        .If(x => x.Request.HeadRestRouteParam("altRoute") == "init")
+                        .MapTo<InitViewModel>()
+                    .For(HomePage.ModelTypeAlias)
+                        .If(x => x.Request.HeadRestRouteParam("altRoute") == "routes")
+                        .MapTo<RoutesViewModel>()
                     .For(HomePage.ModelTypeAlias).MapTo<HomePageViewModel>()
                     .For(StandardPage.ModelTypeAlias).MapTo<StandardPageViewModel>()
                     .For(BlogPage.ModelTypeAlias).MapTo<BlogPageViewModel>()
-                    .For(BlogPostPage.ModelTypeAlias).MapTo<BlogPostPageViewModel>(),
-                RoutesResolver = null
+                    .For(BlogPostPage.ModelTypeAlias).MapTo<BlogPostPageViewModel>()
             });
 
             // Configure auto build
