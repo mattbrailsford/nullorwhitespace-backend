@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Examine;
 using NullOrWhitespace.Models;
-using Our.Umbraco.HeadRest.Web.Mapping;
+using Our.Umbraco.HeadRest.Web.Extensions;
 using System;
 using System.Collections.Generic;
 using Umbraco.Core;
@@ -14,7 +14,7 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
         public ResolutionResult Resolve(ResolutionResult source)
         {
             var currentPage = source.Context.SourceValue as IPublishedContent;
-            var context = source.Context.Options.Items["HeadRestMappingContext"] as HeadRestMappingContext;
+            var context = source.Context.GetHeadRestMappingContext();
             var navigator = context.UmbracoContext.ContentCache.GetXPathNavigator();
             var itterator = navigator.Select($"id({currentPage.Id})/descendant-or-self::*[@isDoc]");
 

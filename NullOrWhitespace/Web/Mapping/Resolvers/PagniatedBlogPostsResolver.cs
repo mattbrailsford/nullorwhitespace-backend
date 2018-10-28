@@ -2,7 +2,6 @@
 using Examine;
 using NullOrWhitespace.Models;
 using Our.Umbraco.HeadRest.Web.Extensions;
-using Our.Umbraco.HeadRest.Web.Mapping;
 using System.Linq;
 using Umbraco.Core;
 using Umbraco.Core.Models;
@@ -18,7 +17,7 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
             if (blogPage == null)
                 return source.Ignore();
 
-            var context = source.Context.Options.Items["HeadRestMappingContext"] as HeadRestMappingContext;
+            var context = source.Context.GetHeadRestMappingContext();
             if (context == null)
                 return source.Ignore();
 
