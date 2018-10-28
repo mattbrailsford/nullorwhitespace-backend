@@ -32,7 +32,7 @@ namespace NullOrWhitespace
             HeadRest.ConfigureEndpoint(new HeadRestOptions
             {
                 CustomRouteMappings = new HeadRestRouteMap()
-                    .For("^/(?<altRoute>init|routes)/?$").MapTo("/")
+                    .For("^/(?<altRoute>init|routes|content-types)/?$").MapTo("/")
                     .For("^/(blog)/(?<page>[0-9]+)/?$").MapTo("/$1/"),
                 ViewModelMappings = new HeadRestViewModelMap()
                     .For(HomePage.ModelTypeAlias)
@@ -41,6 +41,9 @@ namespace NullOrWhitespace
                     .For(HomePage.ModelTypeAlias)
                         .If(x => x.Request.HeadRestRouteParam("altRoute") == "routes")
                         .MapTo<RoutesViewModel>()
+                    .For(HomePage.ModelTypeAlias)
+                        .If(x => x.Request.HeadRestRouteParam("altRoute") == "content-types")
+                        .MapTo<ContentTypesViewModel>()
                     .For(HomePage.ModelTypeAlias).MapTo<HomePageViewModel>()
                     .For(StandardPage.ModelTypeAlias).MapTo<StandardPageViewModel>()
                     .For(BlogPage.ModelTypeAlias).MapTo<BlogPageViewModel>()

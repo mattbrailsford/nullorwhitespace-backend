@@ -18,7 +18,7 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
             var navigator = context.UmbracoContext.ContentCache.GetXPathNavigator();
             var itterator = navigator.Select($"id({currentPage.Id})/descendant-or-self::*[@isDoc]");
 
-            var routes = new List<string>();
+            var routes = new List<object>();
 
             while (itterator.MoveNext())
             {
@@ -42,15 +42,26 @@ namespace NullOrWhitespace.Web.Mapping.Resolvers
                         var totalPages = (int)Math.Ceiling((double)results.TotalItemCount / NullOrWhitespaceConstants.BlogPageSize);
                         var baseUrl = context.UmbracoContext.UrlProvider.GetUrl(id);
 
-                        routes.Add(baseUrl);
+                        routes.Add(new
+                        {
+                            route = baseUrl.TrimEnd('/'),
+                            type = contentType
+                        });
+
                         for(var p = 2; p <= totalPages; p++)
                         {
-                            routes.Add(baseUrl + p + '/');
+                            routes.Add(new {
+                                route = baseUrl + p,
+                                type = contentType
+                            });
                         }
                     }
                     else
                     {
-                        routes.Add(context.UmbracoContext.UrlProvider.GetUrl(id));
+                        routes.Add(new {
+                            route = context.UmbracoContext.UrlProvider.GetUrl(id).TrimEnd('/').EnsureStartsWith('/'),
+                            type = contentType
+                        });
                     }
                 }
             }

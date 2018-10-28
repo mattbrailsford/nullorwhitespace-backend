@@ -4,6 +4,6 @@ namespace NullOrWhitespace.Web.ViewModels
 {
     public class RoutesViewModel
     {
-        public IEnumerable<string> Routes { get; set; }
+        public IEnumerable<object> Routes { get; set; }
     }
 }

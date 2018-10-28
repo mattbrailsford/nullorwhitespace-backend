@@ -293,6 +293,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Extensions\StringExtensions.cs" />
     <Compile Include="Web\Mapping\Resolvers\PagniatedBlogPostsResolver.cs" />
+    <Compile Include="Web\Mapping\Resolvers\ContentTypesResolver.cs" />
     <Compile Include="Web\ViewModels\BaseBlockViewModel.cs" />
     <Compile Include="Web\ViewModels\BaseBlogPostPageViewModel.cs" />
     <Compile Include="Web\Mapping\Resolvers\LatestBlogPostsResolver.cs" />
@@ -305,6 +306,7 @@
     <Compile Include="Web\ViewModels\CodeBlockViewModel.cs" />
     <Compile Include="Web\ViewModels\ImageBlockViewModel.cs" />
     <Compile Include="Web\ViewModels\RichTextBlockViewModel.cs" />
+    <Compile Include="Web\ViewModels\ContentTypesViewModel.cs" />
     <Compile Include="Web\ViewModels\RoutesViewModel.cs" />
     <Compile Include="Web\ViewModels\InitViewModel.cs" />
     <Compile Include="Web\ViewModels\SocialLinkViewModel.cs" />

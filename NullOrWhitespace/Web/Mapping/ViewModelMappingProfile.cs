@@ -21,6 +21,8 @@ namespace NullOrWhitespace.Web.Mapping
                 .ForMember(x => x.Url, o => o.MapFrom(x => x.ProfileUrl))
                 .ForMember(x => x.Type, o => o.MapFrom(x => x.DocumentTypeAlias.TrimEnd("Link")));
 
+            Mapper.CreateMap<IContentType, ContentTypeViewModel>();
+
             // HomePage
             Mapper.CreateMap<HomePage, HomePageViewModel>()
                 .IncludeBase<Page, BasePageViewModel>()
@@ -31,6 +33,9 @@ namespace NullOrWhitespace.Web.Mapping
 
             Mapper.CreateMap<HomePage, RoutesViewModel>()
                 .ForMember(x => x.Routes, o => o.ResolveUsing<RoutesResolver>());
+
+            Mapper.CreateMap<HomePage, ContentTypesViewModel>()
+                .ForMember(x => x.ContentTypes, o => o.ResolveUsing<ContentTypesResolver>());
 
             // StandardPage
             Mapper.CreateMap<StandardPage, StandardPageViewModel>()
