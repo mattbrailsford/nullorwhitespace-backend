@@ -269,6 +269,13 @@
       <DependentUpon>Models.mb</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\Mapping\BaseMapping.cs" />
+    <Compile Include="Web\Mapping\StandardPageViewModelMapping.cs" />
+    <Compile Include="Web\Mapping\SitemapViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\InitViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\BasicNodeViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\BasePageViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\BlogPostPageViewModelMapping.cs" />
     <Compile Include="Web\Mapping\NullOrWhitespaceMapDefinition.cs" />
     <Compile Include="Web\Mapping\Resolvers\MetaTitleResolver.cs" />
     <Compile Include="Web\StringExtensions.cs" />

@@ -21,15 +21,14 @@ namespace NullOrWhitespace.Composing
             _headRest.ConfigureEndpoint(new HeadRestOptions 
             {
                 CustomRouteMappings = new HeadRestRouteMap()
-                    .For("^/(?<altRoute>init|sitemap|content-types)/?$").MapTo("/")
-                    .For("^/(blog)/(?<page>[0-9]+)/?$").MapTo("/$1/"),
+                    .For("^/(?<altRoute>init|sitemap|content-types)/?$").MapTo("/"), 
                 ViewModelMappings = new HeadRestViewModelMap()
                     .For(HomePage.ModelTypeAlias)
                         .If(x => x.Request.HeadRestRouteParam("altRoute") == "init")
                         .MapTo<InitViewModel>()
                     .For(HomePage.ModelTypeAlias)
                         .If(x => x.Request.HeadRestRouteParam("altRoute") == "sitemap")
-                        .MapTo<BasicNodeViewModel>()
+                        .MapTo<SitemapViewModel>()
                     //.For(HomePage.ModelTypeAlias)
                     //    .If(x => x.Request.HeadRestRouteParam("altRoute") == "content-types")
                     //    .MapTo<ContentTypesViewModel>()
