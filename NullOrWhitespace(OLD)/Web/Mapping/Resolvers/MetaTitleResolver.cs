@@ -5,7 +5,7 @@ using Umbraco.Core.Mapping;
 
 namespace NullOrWhitespace.Web.Mapping.Resolvers
 {
-    public static class MetaTitleResolver
+    public class MetaTitleResolver
     {
         public static string Resolve(MapperContext mapperContext)
         {
