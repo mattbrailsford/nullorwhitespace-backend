@@ -2,7 +2,7 @@
 using NullOrWhitespace.Web.ViewModels;
 using Umbraco.Core.Mapping;
 
-namespace NullOrWhitespace.Web.Mapping
+namespace NullOrWhitespace.Web.Mapping.Maps
 {
     public class SitemapViewModelMapper : BaseMapping<SitemapViewModelMapper, HomePage, SitemapViewModel>
     {

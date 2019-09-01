@@ -3,7 +3,7 @@ using NullOrWhitespace.Web.ViewModels;
 using System.Linq;
 using Umbraco.Core.Mapping;
 
-namespace NullOrWhitespace.Web.Mapping
+namespace NullOrWhitespace.Web.Mapping.Maps
 {
     public class InitViewModelMapper : BaseMapping<InitViewModelMapper, HomePage, InitViewModel>
     {

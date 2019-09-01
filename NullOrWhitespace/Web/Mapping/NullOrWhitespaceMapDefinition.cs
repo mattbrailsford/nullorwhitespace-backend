@@ -1,6 +1,6 @@
 ﻿using NullOrWhitespace.Models;
+using NullOrWhitespace.Web.Mapping.Maps;
 using NullOrWhitespace.Web.ViewModels;
-using System;
 using Umbraco.Core.Mapping;
 
 namespace NullOrWhitespace.Web.Mapping
@@ -9,21 +9,12 @@ namespace NullOrWhitespace.Web.Mapping
     {
         public void DefineMaps(UmbracoMapper mapper)
         {
-            DefineMap<Page, BasePageViewModel>(mapper, BasePageViewModelMapper.Instance.Map);
-            DefineMap<Page, BasicNodeViewModel>(mapper, BasicNodeViewModelMapper.Instance.Map);
-            DefineMap<HomePage, InitViewModel>(mapper, InitViewModelMapper.Instance.Map);
-            DefineMap<HomePage, SitemapViewModel>(mapper, SitemapViewModelMapper.Instance.Map);
-            DefineMap<BlogPostPage, BlogPostPageViewModel>(mapper, BlogPostPageViewModelMapping.Instance.Map);
-            DefineMap<StandardPage, StandardPageViewModel>(mapper, StandardPageViewModelMapping.Instance.Map);
-        }
-
-        private void DefineMap<TFrom, TTo>(UmbracoMapper mapper, Action<TFrom, TTo, MapperContext> map)
-            where TTo : new()
-        {
-            mapper.Define(
-               (src, ctx) => new TTo(),
-               map
-            );
+            mapper.Define<Page, BasePageViewModel>(BasePageViewModelMapper.Instance.Map);
+            mapper.Define<Page, BasicNodeViewModel>(BasicNodeViewModelMapper.Instance.Map);
+            mapper.Define<HomePage, InitViewModel>(InitViewModelMapper.Instance.Map);
+            mapper.Define<HomePage, SitemapViewModel>(SitemapViewModelMapper.Instance.Map);
+            mapper.Define<BlogPostPage, BlogPostPageViewModel>(BlogPostPageViewModelMapping.Instance.Map);
+            mapper.Define<StandardPage, StandardPageViewModel>(StandardPageViewModelMapping.Instance.Map);
         }
     }
 }

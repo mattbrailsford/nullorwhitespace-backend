@@ -269,15 +269,16 @@
       <DependentUpon>Models.mb</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\Mapping\BaseMapping.cs" />
-    <Compile Include="Web\Mapping\StandardPageViewModelMapping.cs" />
-    <Compile Include="Web\Mapping\SitemapViewModelMapper.cs" />
-    <Compile Include="Web\Mapping\InitViewModelMapper.cs" />
-    <Compile Include="Web\Mapping\BasicNodeViewModelMapper.cs" />
-    <Compile Include="Web\Mapping\BasePageViewModelMapper.cs" />
-    <Compile Include="Web\Mapping\BlogPostPageViewModelMapping.cs" />
+    <Compile Include="Web\Mapping\Maps\BaseMapping.cs" />
+    <Compile Include="Web\Mapping\Maps\StandardPageViewModelMapping.cs" />
+    <Compile Include="Web\Mapping\Maps\SitemapViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\Maps\InitViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\Maps\BasicNodeViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\Maps\BasePageViewModelMapper.cs" />
+    <Compile Include="Web\Mapping\Maps\BlogPostPageViewModelMapping.cs" />
     <Compile Include="Web\Mapping\NullOrWhitespaceMapDefinition.cs" />
     <Compile Include="Web\Mapping\Resolvers\MetaTitleResolver.cs" />
+    <Compile Include="Web\Mapping\UmbracoMapperExtensions.cs" />
     <Compile Include="Web\StringExtensions.cs" />
     <Compile Include="Web\ViewModels\BasePageViewModel.cs" />
     <Compile Include="Web\ViewModels\BasicNodeViewModel.cs" />

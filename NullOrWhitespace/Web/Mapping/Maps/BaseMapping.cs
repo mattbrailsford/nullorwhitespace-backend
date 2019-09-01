@@ -1,7 +1,7 @@
 ﻿using System;
 using Umbraco.Core.Mapping;
 
-namespace NullOrWhitespace.Web.Mapping
+namespace NullOrWhitespace.Web.Mapping.Maps
 {
     public abstract class BaseMapping<TSelf, TFrom, TTo>
         where TSelf : BaseMapping<TSelf, TFrom, TTo>, new()
