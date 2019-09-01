@@ -4,12 +4,11 @@ using Our.Umbraco.HeadRest;
 using Our.Umbraco.HeadRest.Web;
 using Our.Umbraco.HeadRest.Web.Mapping;
 using Our.Umbraco.HeadRest.Web.Routing;
-using System;
 using Umbraco.Core.Composing;
 
 namespace NullOrWhitespace.Composing
 {
-    public class NullOrWhitespaceComponent : IComponent
+    public class NullOrWhitespaceComponent : IComponent 
     {
         private readonly HeadRest _headRest;
 
@@ -21,7 +20,7 @@ namespace NullOrWhitespace.Composing
             _headRest.ConfigureEndpoint(new HeadRestOptions 
             {
                 CustomRouteMappings = new HeadRestRouteMap()
-                    .For("^/(?<altRoute>init|sitemap|content-types)/?$").MapTo("/"), 
+                    .For("^/(?<altRoute>init|sitemap)/?$").MapTo("/"), 
                 ViewModelMappings = new HeadRestViewModelMap()
                     .For(HomePage.ModelTypeAlias)
                         .If(x => x.Request.HeadRestRouteParam("altRoute") == "init")
@@ -29,12 +28,8 @@ namespace NullOrWhitespace.Composing
                     .For(HomePage.ModelTypeAlias)
                         .If(x => x.Request.HeadRestRouteParam("altRoute") == "sitemap")
                         .MapTo<SitemapViewModel>()
-                    //.For(HomePage.ModelTypeAlias)
-                    //    .If(x => x.Request.HeadRestRouteParam("altRoute") == "content-types")
-                    //    .MapTo<ContentTypesViewModel>()
                     .For(StandardPage.ModelTypeAlias).MapTo<StandardPageViewModel>()
                     .For(BlogPostPage.ModelTypeAlias).MapTo<BlogPostPageViewModel>()
-                    .ForEverythingElse().MapTo<BasePageViewModel>()
             });
         }
 
