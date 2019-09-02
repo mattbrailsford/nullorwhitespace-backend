@@ -11,6 +11,7 @@ namespace NullOrWhitespace.Web.Mapping
         {
             mapper.Define<HomePage, InitViewModel>(InitViewModelMapper.Instance.Map);
             mapper.Define<HomePage, SitemapViewModel>(SitemapViewModelMapper.Instance.Map);
+            mapper.Define<HomePage, HomePageViewModel>(HomePageViewModelMapping.Instance.Map);
             mapper.Define<BlogPostPage, BlogPostPageViewModel>(BlogPostPageViewModelMapping.Instance.Map);
             mapper.Define<StandardPage, StandardPageViewModel>(StandardPageViewModelMapping.Instance.Map);
             mapper.Define<Page, BasicNodeViewModel>(BasicNodeViewModelMapper.Instance.Map);

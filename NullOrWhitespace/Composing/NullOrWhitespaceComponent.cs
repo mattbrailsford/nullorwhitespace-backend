@@ -28,8 +28,10 @@ namespace NullOrWhitespace.Composing
                     .For(HomePage.ModelTypeAlias)
                         .If(x => x.Request.HeadRestRouteParam("altRoute") == "sitemap")
                         .MapTo<SitemapViewModel>()
+                    .For(HomePage.ModelTypeAlias).MapTo<HomePageViewModel>()
                     .For(StandardPage.ModelTypeAlias).MapTo<StandardPageViewModel>()
                     .For(BlogPostPage.ModelTypeAlias).MapTo<BlogPostPageViewModel>()
+                    .ForEverythingElse().MapTo<BasePageViewModel>()
             });
         }
 
